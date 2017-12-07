@@ -3,14 +3,17 @@
 pycaffe port of RSA([Recurrent Scale Approximation for Object Detection](https://github.com/sciencefans/RSA-for-object-detection))
 
 # Usage
+1.download matlab version of RSA
 
-1.make pycaffe under your_caffe_path
+2.copy RSA.py,nms.py to ./predict/
 
-2.change the caffe_root in RSA.py to your_caffe_path/python
+3.make pycaffe under your_caffe_path
 
-3.create a sample of RSA,e.g,rsa = RSA()
+4.change the caffe_root in RSA.py to your_caffe_path/python
 
-4.call function detect
+5.create a sample of RSA,e.g,rsa = RSA()
+
+6.call function detect
 
 	input param:image
 	output param:score,box,pts
