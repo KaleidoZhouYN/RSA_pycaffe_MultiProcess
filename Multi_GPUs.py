@@ -15,7 +15,6 @@ def multiprocess(img_list,gpu_ids):
         start = gpu_idx*num_per_gpu
         end = (gpu_idx+1)*num_per_gpu 
         end = len(img_list) if (end > len(img_list)) else end
-        print(start,end)
         img_lists.append(img_list[start:end])
         pool.apply_async(work,args=(gpu_ids[gpu_idx],img_lists[gpu_idx]))
     
