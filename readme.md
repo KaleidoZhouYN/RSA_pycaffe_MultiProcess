@@ -27,14 +27,14 @@ e.g
 
 7.For multiGPUs:
 
-   1) Change work function in Work.py to what you want
+1) Change work function in Work.py to what you want
 
-   2) run. e.g:
+2) run. e.g:
 
-		import Multi_GPUs
-		list = ['1.jpg','2.jpg','3.jpg']
-		gpu_ids = [0,1,2]
-		multiprocess(list,gpu_ids)
+	import Multi_GPUs
+	list = ['1.jpg','2.jpg','3.jpg']
+	gpu_ids = [0,1,2]
+	multiprocess(list,gpu_ids)
 	
 
 # Attention
