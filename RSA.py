@@ -101,31 +101,28 @@ class RSA(object):
             else:
                 diffcnt = scale_t[i] - scale_t[i-1]
             
-            print(diffcnt)
             for cnt in range(diffcnt):
                 self.Net2.blobs['data'].reshape(*inmap.shape)
                 np.copyto(self.Net2.blobs['data'].data, inmap)
                 inmap = self.Net2.forward()['res2b_trans_5']
             
             featmap_t.append(inmap.copy())
-            print(inmap.shape)
         return featmap_t
     
     def featmap_2_result(self,featmap_t,img):
         mins = 3
         maxs = 14
         num = len(featmap_t)
-        print(num)
         parsed = {}
         parsed['cls'] = []
         parsed['pts'] = []
         parsed['box'] = []
         s = max(img.shape[0],img.shape[1])/self.max_img
         for id in range(num):
+            #scale,s:resize pts and box from max_img to img_size
             flag,result = self.detect_all_by_featmap(featmap_t[id],self.scale[id]*s)
-            print(flag)
             if (flag != 0):
-                #resize pts and box from max_img to img_size
+                
                 parsed['cls'] += result['cls']
                 parsed['pts'] += result['pts']
                 parsed['box'] += result['box']
