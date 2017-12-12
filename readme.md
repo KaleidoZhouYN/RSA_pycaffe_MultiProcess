@@ -40,12 +40,10 @@ e.g
 
 2) run. e.g:
 
-
 	import Multi_GPUs
 	list = ['1.jpg','2.jpg','3.jpg']
 	gpu_ids = [0,1,2]
 	multiprocess(list,gpu_ids)
-	
 
 # Attention
 
