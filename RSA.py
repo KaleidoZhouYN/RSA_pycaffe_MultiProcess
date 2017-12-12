@@ -16,7 +16,7 @@ class RSA(object):
     """
     
     def __init__(self,
-                max_img = 2048.0,
+                max_img = 512.0,
                 target_ratio = -4.0,
                 det_thresh = 5,
                 plot_thresh = 7,
@@ -164,7 +164,7 @@ class RSA(object):
         std_pts = np.array([0.2,0.2,0.8,0.2,0.5,0.5,0.3,0.75,0.7,0.75]).reshape(-1,2)
         pts_ = np.array(pts).reshape(-1,2)
         similarity_t = transform.SimilarityTransform()
-        #assert(similarity_t.estimate(std_pts,pts_) == True,'gen rect from pts error')
+        similarity_t.estimate(std_pts,pts_)
         T_matrix = np.array(similarity_t.params)
         std_ptc = np.array([0.5,0.5,1]).reshape(3,-1)
         std_ptl = np.array([0,0,1]).reshape(3,-1)
@@ -183,7 +183,6 @@ class RSA(object):
         cls = np.hstack(parsed['cls'])
         pts = np.vstack(parsed['pts'])
         boxes = np.hstack([box, np.array(cls, ndmin=2).T])
-
         boxes,idx = nms.non_max_suppression(boxes,self.nms_thres)
         f_idx = boxes[:,4] > self.nms_score
         return cls[idx[f_idx]],box[idx[f_idx]],pts[idx[f_idx]]
