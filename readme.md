@@ -2,6 +2,16 @@
 
 pycaffe port of RSA([Recurrent Scale Approximation for Object Detection](https://github.com/sciencefans/RSA-for-object-detection))
 
+# Updata 2017/12/12
+### aligned images with (ec-mc-y= 40,size=[96,112]) using MTCNN & RSA
+
+### MTCNN:
+![](./imgs/MTCNN/m.022s9n.png)
+![](./imgs/MTCNN/m.01h2_6.png)
+### RSA:
+![](./imgs/RSA/m.022s9n.png)
+![](./imgs/RSA/m.01h2_6.png)
+
 # Usage
 1.download matlab version of RSA
 
@@ -22,14 +32,14 @@ e.g
 	img = cv2.imread(img_path,1)
 	score,box,pts = rsa.detect(image)
 
-### update:
-
+### update 2017/12/9:
 
 7.For multiGPUs:
 
 1) Change work function in Work.py to what you want
 
 2) run. e.g:
+
 
 	import Multi_GPUs
 	list = ['1.jpg','2.jpg','3.jpg']

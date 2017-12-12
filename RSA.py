@@ -4,7 +4,7 @@ import cv2
 from skimage import transform as transform
 import nms
 
-caffe_root = '../CaffeMex_v2/python'  #change to your caffe root path
+caffe_root = '/data2/zhouyinan/CaffeMex_v2/python'  #change to your caffe root path
 import sys
 sys.path.append(caffe_root)
 
@@ -119,10 +119,9 @@ class RSA(object):
         parsed['box'] = []
         s = max(img.shape[0],img.shape[1])/self.max_img
         for id in range(num):
-            #scale,s:resize pts and box from max_img to img_size
             flag,result = self.detect_all_by_featmap(featmap_t[id],self.scale[id]*s)
             if (flag != 0):
-                
+                #resize pts and box from max_img to img_size
                 parsed['cls'] += result['cls']
                 parsed['pts'] += result['pts']
                 parsed['box'] += result['box']
@@ -165,7 +164,7 @@ class RSA(object):
         std_pts = np.array([0.2,0.2,0.8,0.2,0.5,0.5,0.3,0.75,0.7,0.75]).reshape(-1,2)
         pts_ = np.array(pts).reshape(-1,2)
         similarity_t = transform.SimilarityTransform()
-        assert(similarity_t.estimate(std_pts,pts_) == True,'gen rect from pts error')
+        #assert(similarity_t.estimate(std_pts,pts_) == True,'gen rect from pts error')
         T_matrix = np.array(similarity_t.params)
         std_ptc = np.array([0.5,0.5,1]).reshape(3,-1)
         std_ptl = np.array([0,0,1]).reshape(3,-1)
