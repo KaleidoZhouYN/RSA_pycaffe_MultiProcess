@@ -12,6 +12,9 @@ pycaffe port of RSA([Recurrent Scale Approximation for Object Detection](https:/
 ![](./imgs/RSA/m.022s9n.png)
 ![](./imgs/RSA/m.01h2_6.png)
 
+# LFW landmark Points using RSA:
+[here](https://pan.baidu.com/s/1dE5kNLn)
+
 # Usage
 1.download matlab version of RSA
 
